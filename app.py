@@ -22,8 +22,21 @@ def verif_email(email):
 @app.route('/', methods=['GET', 'POST'])
 @app.route("/index", methods=['GET', 'POST'])
 def index():
+    result = []
+    with open("data.csv", "r", encoding="utf-8") as fichier_csv:
+        data = csv.reader(fichier_csv, delimiter=';')
+        keys = ['prenom', 'nom', 'email']        
+        for row in data:
+            d = {}
+            for i in range(len(keys)):
+                d[keys[i]] = row[i]
+            result.append(d)       
+    return render_template('index.html', list_mail=result)
+    
+@app.route("/encode_mail", methods=['GET', 'POST'])
+def encode_mail():
     if request.method == 'GET':
-        return render_template('index.html')
+        return render_template('encode_mail.html')
 
     elif request.method == 'POST':
         session['first_name'] = request.form['first_name']
@@ -31,19 +44,18 @@ def index():
         session['email'] = request.form['email']
 
         # Do something with the form data (e.g. store it in a database)
-        sep = ";"
-        line = session['first_name'] + sep + session['last_name'] + sep + session['email']
+        line = [session['first_name'], session['last_name'], session['email']]
 
         with open("data.csv", "a", encoding="utf-8", newline="") as fichier_csv:
-            writer = csv.writer(fichier_csv)
-            writer.writerow([line])
+            writer = csv.writer(fichier_csv, delimiter=';')
+            writer.writerow(line)
         
         return redirect('/submitted')
 
     else:
         return "Method Not Allowed"
 
-@app.route('/submitted/')
+@app.route('/submitted')
 def submitted():
     return render_template('submitted.html',
                            first_name=session['first_name'],
@@ -51,6 +63,14 @@ def submitted():
                            redirect=url_for('index'),
                            delay=5000,
                            )
+
+@app.route('/edit')
+def edit():
+     return render_template('edit.html,')
+
+@app.route('/delete')
+def delete():
+     return render_template('delete.html,')
 
 if __name__ == '__main__':
 	app.run(debug=True)
