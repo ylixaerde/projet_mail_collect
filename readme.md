@@ -11,7 +11,7 @@
 * Stockage des données dans un fichier CSV
 
 ## Changelog
-### Version 2
+### Version 4
 * nettoyage du code
 * ajout des en-têtes dans le fichier csv
 * ajout des id dans les lignes
