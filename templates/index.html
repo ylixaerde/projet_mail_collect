@@ -33,9 +33,11 @@
 
     <div class="bg-white rounded-lg shadow-lg p-6 w-full">
         <h1 class="text-2xl mb-4">Liste emails</h1>
-        {% for mail in list_mail %}
+        {% for line in data %}
             <div class="mb-2">
-                Prénom : {{ mail['prenom'] }} Nom : {{ mail['nom'] }} Mail : {{ mail['email'] }} <a href="{{ url_for('edit') }}"> <img src="https://img.icons8.com/?size=64&id=56304&format=png" alt="Edit icon" class="float-right w-8"> </a> <a href="{{ url_for('delete') }}"> <img src="https://img.icons8.com/?size=512&id=CecQCdpL95Ej&format=png" alt="Delete icon" class=" float-right w-8"> </a>
+                {{ line['id'] }}. Prénom : {{ line['prenom'] }}, Nom : {{ line['nom'] }}, Mail : {{ line['email'] }} 
+                <a href="{{ url_for('edit') }}"> <img src="https://img.icons8.com/?size=64&id=56304&format=png" alt="Edit icon" class="float-right w-8"> </a> 
+                <a href="{{ url_for('delete') }}"> <img src="https://img.icons8.com/?size=512&id=CecQCdpL95Ej&format=png" alt="Delete icon" class=" float-right w-8"> </a>
             </div>
             <hr class="mb-2 blue-500">
         {% endfor %}

@@ -9,3 +9,11 @@
 * Design en TailwindCSS
 * Gestion des données par Python et Flask
 * Stockage des données dans un fichier CSV
+
+## Changelog
+### Version 2
+* nettoyage du code
+* ajout des en-têtes dans le fichier csv
+* ajout des id dans les lignes
+* ajout des id dans l'affichage principal
+* utilisation des dictionnaires pour la manipulation des données

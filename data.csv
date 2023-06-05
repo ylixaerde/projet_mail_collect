@@ -1,8 +1,11 @@
-Yohan;Lixaerde;yohan.lixaerde@francoisdesales.be
-Frank;West;frank.west@awesome.com
-John;Smith;john.smith@anon.org
-Korben;Dallas;korben-dallas@dontcontact.nasa
-Bruce;Wayne;dark-knight@gotham.com
-Pepe;Des Bois;pepe-desbois@gmail.com
-Mister;Oizo;mister_oizo@edbanger.fr
-Alain;Dupont;a-dup@gmail.com
+id;prenom;nom;email
+1;Yohan;Lixaerde;yohan.lixaerde@francoisdesales.be
+2;Frank;West;frank.west@awesome.com
+3;John;Smith;john.smith@anon.org
+4;Korben;Dallas;korben-dallas@dontcontact.never
+5;Bruce;Wayne;mister.b@gotham.com
+6;Pepe;Des Bois;pepe-desbois@gmail.com
+7;Mister;Oizo;mister_oizo@edbanger.fr
+8;Alain;Dupont;a-dup@gmail.com
+9;Ellie;Blackwater;ellie-bwater@gmail.com
+10;Cassiopée;De La Hulutte;i-love-choux@poudlard.com
