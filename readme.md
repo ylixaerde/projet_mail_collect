@@ -11,6 +11,9 @@
 * Stockage des données dans un fichier CSV
 
 ## Changelog
+### Version 5
+* Ajout fonction edit
+* Ajout fonction delete
 ### Version 4
 * nettoyage du code
 * ajout des en-têtes dans le fichier csv
