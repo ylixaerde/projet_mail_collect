@@ -43,13 +43,73 @@ def submitted():
                            delay=5000,
                            )
 
-@app.route('/edit')
-def edit():
-     return render_template('edit.html,')
+@app.route('/edit/<id>', methods=['GET', 'POST'])
+def edit(id):
+    if request.method == 'GET':
+        line = []
+        with open("data.csv", "r", encoding="utf-8", newline="") as fichier_csv:
+            data = list(csv.DictReader(fichier_csv, delimiter=";"))
 
-@app.route('/delete')
-def delete():
-     return render_template('delete.html,')
+            # Rechercher une ligne par son ID et modifier son contenu
+            for line in data:
+                if line['id'] == id:
+                    prenom = line['prenom']
+                    nom =  line['nom']
+                    email = line['email']
+
+        return render_template('edit_mail.html',
+                                prenom = prenom,
+                                nom = nom,
+                                email = email
+                                )
+     
+    elif request.method == 'POST':
+        session['first_name'] = request.form['first_name']
+        session['last_name'] = request.form['last_name']
+        session['email'] = request.form['email']
+        data = []
+
+        with open("data.csv", "r", encoding="utf-8", newline="") as fichier_csv:
+            data = list(csv.DictReader(fichier_csv, delimiter=";"))
+
+        # Rechercher une ligne par son ID et modifier son contenu
+        for line in data:
+            if line['id'] == id:
+                line['prenom'] = session['first_name']
+                line['nom'] = session['last_name']
+                line['email'] = session['email']
+
+        # Réécrire le fichier CSV avec les modifications
+        with open('data.csv', mode='w', newline='') as file:
+            fieldnames = ['id', 'prenom', 'nom', 'email']
+            writer = csv.DictWriter(file, fieldnames=fieldnames, delimiter=";")
+            writer.writeheader()
+            writer.writerows(data)
+        
+        return redirect('/submitted')
+     
+
+@app.route('/delete/<id>', methods=['GET'])
+def delete(id):
+    data = []
+
+    with open("data.csv", "r", encoding="utf-8", newline="") as fichier_csv:
+        data = list(csv.DictReader(fichier_csv, delimiter=";"))
+
+    # Search for the dictionary that contains the line to be deleted
+    for line in data:
+        if line['id'] == id:
+            # Remove the dictionary from the list
+            data.remove(line)
+
+    # Write the modified list of dictionaries to the CSV file
+    with open('data.csv', mode='w', newline='') as file:
+        fieldnames = ['id', 'prenom', 'nom', 'email']
+        writer = csv.DictWriter(file, fieldnames=fieldnames, delimiter=";")
+        writer.writeheader()
+        writer.writerows(data)
+
+    return redirect('/')
 
 if __name__ == '__main__':
 	app.run(debug=True)
