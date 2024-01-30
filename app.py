@@ -5,13 +5,14 @@ import csv
 app = Flask(__name__)
 app.secret_key = b'bafe004cc8de79cc96482b95db2d75473a3aa855b3270350267ccc92bddd46c5'
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route("/index", methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
+@app.route("/index", methods=['GET'])
 def index():    
     with open("data.csv", "r", encoding="utf-8") as fichier_csv:
         data = list(csv.DictReader(fichier_csv, delimiter=";"))      
     return render_template('index.html', data=data)
-    
+
+
 @app.route("/encode_mail", methods=['GET', 'POST'])
 def encode_mail():
     if request.method == 'GET':
