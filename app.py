@@ -26,7 +26,7 @@ def encode_mail():
 
         with open("data.csv", "r", encoding="utf-8", newline="") as fichier_csv:
             data = list(csv.DictReader(fichier_csv, delimiter=";"))
-            new_id = len(data) + 1  
+            new_id = int(data[-1]['id']) + 1  
 
         with open("data.csv", "a", encoding="utf-8", newline="") as fichier_csv:                      
             writer = csv.writer(fichier_csv, delimiter=';')            
