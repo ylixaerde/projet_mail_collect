@@ -1,7 +1,7 @@
 id;prenom;nom;email
 1;Yohan;Lixaerde;yohan.lixaerde@francoisdesales.be
 2;Frank;West;frank.west@awesome.com
-3;John;Smith;john.smith@anon.org
+3;John;Smith;john.smith@gmailcom
 4;Korben;Dallas;korben-dallas@dontcontact.never
 5;Bruce;Wayne;mister.b@gotham.com
 6;Pepe;The Frog;pepe-the-frog@gmail.com
@@ -10,3 +10,8 @@ id;prenom;nom;email
 10;Piet;Piet;piet@gmail.com
 11;Mike;Killer;killermike@og.com
 12;Armani;White;armabianco@gmail.com
+13;Ezio;Rizzo;ezio.rizzo@gmail.com
+14;Lucas;Brichard;lucas.brichard@gmail.com
+15;Théo;Darville;theo.darville2@gmail.com
+16;Youcef;Hadji;youcef_hadji@gmail.com
+17;Lilya;Houmimi;l.houmimi@gmail.com

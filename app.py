@@ -12,7 +12,6 @@ def index():
         data = list(csv.DictReader(fichier_csv, delimiter=";"))      
     return render_template('index.html', data=data)
 
-
 @app.route("/encode_mail", methods=['GET', 'POST'])
 def encode_mail():
     if request.method == 'GET':
